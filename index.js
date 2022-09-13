@@ -1,3 +1,17 @@
+const fs = require('fs')
+
+if (!fs.existsSync('./config.json')) {
+  fs.writeFileSync('./config.json', JSON.stringify({
+	token: "",
+    clientId: "",
+    appId: "",
+    appSecret: "",
+    access_token: "",
+    announcementChannel: "",
+    pageId: ""
+  }))
+}
+
 const { Client, GatewayIntentBits } = require('discord.js');
 const { token, access_token, pageId, announcementChannel } = require('./config.json');
 const { helpEmbed } = require("./embeds")
@@ -36,7 +50,7 @@ client.once('ready', () => {
 client.on('interactionCreate', async interaction => {
 	if (!interaction.isChatInputCommand()) return;
 
-	const { commandName } = interaction;
+	const { commandName, options } = interaction;
 
 	if (commandName === 'help') {
 		await interaction.reply({embeds: [helpEmbed]});
