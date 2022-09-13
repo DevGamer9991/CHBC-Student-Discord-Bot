@@ -1,4 +1,9 @@
 {
     "token": "",
-    "clientId": ""
+    "clientId": "",
+    "appId": "",
+    "appSecret": "",
+    "access_token": "",
+    "announcementChannel": "",
+    "pageId": ""
 }
